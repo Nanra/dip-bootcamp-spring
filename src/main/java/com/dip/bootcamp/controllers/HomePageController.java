@@ -6,12 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = ("/home-page"))
+@RequestMapping(value = ("/home"))
 public class HomePageController {
 
     @GetMapping(value = {"", "/"})
     public ResponseEntity<?> homePage() {
         return ResponseEntity.ok("This is Your Home Page");
+    }
+
+    @GetMapping(value = ("/hello"))
+    public String helloPage() {
+        return "index";
     }
 
 }
