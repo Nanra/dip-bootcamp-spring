@@ -11,7 +11,7 @@ public class HomePageController {
 
     @GetMapping(value = {"", "/"})
     public ResponseEntity<?> homePage() {
-        return ResponseEntity.ok("This is Home Page");
+        return ResponseEntity.ok("This is Your Home Page");
     }
 
 }
