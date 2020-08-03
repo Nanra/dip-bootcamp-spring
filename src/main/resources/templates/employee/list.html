@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>List Employee</title>
+</head>
+<body>
+
+<table border="1">
+    <th colspan="4">
+        Table Employee
+    </th>
+    <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>Address</td>
+    </tr>
+    <tr>
+        <td th:text="${name}"></td>
+        <td th:text="${email}"></td>
+        <td th:text="${phone}"></td>
+        <td th:text="${address}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

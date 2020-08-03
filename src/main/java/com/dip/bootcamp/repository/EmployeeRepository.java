@@ -13,7 +13,8 @@ public class EmployeeRepository {
         return null;
     }
 
-    public Integer saveEmployee(Employee dataForSave) {
+
+    public Integer insertEmployee(Employee dataForSave) {
         // Block Code For Transaction with Database
         return null;
     }
