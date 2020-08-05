@@ -29,6 +29,7 @@ public class HomePageController {
 
     @RequestMapping(value = "/dashboard", method = {RequestMethod.GET, RequestMethod.POST})
     public String dashboard(Model model){
+        model.addAttribute("username", "Nanra");
         return "dashboard";
     }
 

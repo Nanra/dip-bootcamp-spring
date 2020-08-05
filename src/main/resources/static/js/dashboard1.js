@@ -2,11 +2,11 @@
      "use strict";
      // toat popup js
      $.toast({
-         heading: 'Welcome to Ample admin',
-         text: 'Use the predefined ones, or specify a custom position object.',
+         heading: 'Welcome to DIP Website',
+         text: 'You are learning Java Programming',
          position: 'top-right',
          loaderBg: '#fff',
-         icon: 'warning',
+         icon: 'info',
          hideAfter: 3500,
          stack: 6
      })
