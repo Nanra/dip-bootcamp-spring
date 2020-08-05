@@ -27,4 +27,9 @@ public class HomePageController {
         return "index";
     }
 
+    @RequestMapping(value = "/dashboard", method = {RequestMethod.GET, RequestMethod.POST})
+    public String dashboard(Model model){
+        return "dashboard";
+    }
+
 }
