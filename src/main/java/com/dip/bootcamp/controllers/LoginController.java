@@ -11,7 +11,7 @@ import java.util.Date;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = {"/", "/login"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model){
         String pageTitle = "Login" + InformationConstant.websiteTitle;
 

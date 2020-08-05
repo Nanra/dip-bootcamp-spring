@@ -1,5 +1,6 @@
 package com.dip.bootcamp.controllers;
 
+import com.dip.bootcamp.utilities.InformationConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -19,17 +20,20 @@ public class HomePageController {
         appMode = environment.getProperty("app-mode");
     }
 
-    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    public String index(Model model){
-        model.addAttribute("datetime", new Date());
-        model.addAttribute("username", "Nanra");
-//        model.addAttribute("mode", appMode);
-        return "index";
-    }
+//    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
+//    public String index(Model model){
+//        model.addAttribute("datetime", new Date());
+//        model.addAttribute("username", "Nanra");
+////        model.addAttribute("mode", appMode);
+//        return "index";
+//    }
 
     @RequestMapping(value = "/dashboard", method = {RequestMethod.GET, RequestMethod.POST})
     public String dashboard(Model model){
+        String pageTitle = "Dashboard" + InformationConstant.websiteTitle;
+
         model.addAttribute("username", "Nanra");
+        model.addAttribute("title", pageTitle);
         return "dashboard";
     }
 
