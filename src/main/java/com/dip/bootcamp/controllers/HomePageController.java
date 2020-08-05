@@ -1,21 +1,29 @@
 package com.dip.bootcamp.controllers;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Date;
 
 @Controller
-@RequestMapping(value = ("/home"))
 public class HomePageController {
 
-    @GetMapping(value = {"", "/"})
-    public ResponseEntity<?> homePage() {
-        return ResponseEntity.ok("This is Your Home Page");
+    private String appMode;
+
+    @Autowired
+    public HomePageController(Environment environment){
+        appMode = environment.getProperty("app-mode");
     }
 
-    @GetMapping(value = ("/hello"))
-    public String helloPage() {
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(Model model){
+        model.addAttribute("datetime", new Date());
+        model.addAttribute("username", "Nanra");
+//        model.addAttribute("mode", appMode);
         return "index";
     }
 
