@@ -19,7 +19,7 @@ public class HomePageController {
         appMode = environment.getProperty("app-mode");
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model){
         model.addAttribute("datetime", new Date());
         model.addAttribute("username", "Nanra");
