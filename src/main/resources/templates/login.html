@@ -4,16 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Simple Login Form</title>
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <link href="../static/custom-css/login-page.css" rel="stylesheet" th:href="@{/custom-css/login-page.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+
+    <title>Login Page</title>
 </head>
+
 <body>
+
 <div class="login-form">
     <form action="/" method="post">
-        <h2 class="text-center">Log in</h2>
+        <h2 class="text-center" >Login</h2>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" required="required">
         </div>
@@ -24,11 +27,13 @@
             <button type="submit" class="btn btn-primary btn-block">Log in</button>
         </div>
         <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <label class="pull-left checkbox-inline">
+                <input type="checkbox"> Remember me</label>
             <a href="#" class="pull-right">Forgot Password?</a>
         </div>
     </form>
     <p class="text-center"><a href="#">Create an Account</a></p>
 </div>
+
 </body>
 </html>

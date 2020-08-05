@@ -1,6 +1,10 @@
+body {
+    color: #fff;
+    background: #239eef;
+}
 .login-form {
     width: 340px;
-    margin: 50px auto;
+    margin: 150px auto;
 }
 .login-form form {
     margin-bottom: 15px;
@@ -9,8 +13,18 @@
     padding: 30px;
 }
 .login-form h2 {
+    color: #1b6d85;
     margin: 0 0 15px;
 }
+
+.login-form label {
+    color: #337ab7;
+}
+
+.login-form > p > a {
+    color: #f7f7f7;
+}
+
 .form-control, .btn {
     min-height: 38px;
     border-radius: 2px;
