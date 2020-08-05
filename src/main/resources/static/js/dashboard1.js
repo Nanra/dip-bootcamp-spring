@@ -2,8 +2,8 @@
      "use strict";
      // toat popup js
      $.toast({
-         heading: 'Welcome to DIP Website',
-         text: 'You are learning Java Programming',
+         heading: 'Login Success',
+         text: 'Welcome to Daya Indosa Pratama Website',
          position: 'top-right',
          loaderBg: '#fff',
          icon: 'info',
