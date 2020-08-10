@@ -99,7 +99,8 @@ public class JdbcHelper {
             simpleJdbcCall.withoutProcedureColumnMetaDataAccess();
 
         if (this.outParam != "-")
-            simpleJdbcCall.returningResultSet(this.outParam, BeanPropertyRowMapper.newInstance(this.oClass));
+            simpleJdbcCall.returningResultSet(this.outParam,
+                    BeanPropertyRowMapper.newInstance(this.oClass));
 
 
         if (this.withCompile)
