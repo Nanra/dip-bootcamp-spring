@@ -19,28 +19,14 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @GetMapping(value = ("/list"))
-    public String listEmployee(Model model) {
+    public ResponseEntity<?> listEmployee() {
 
-        Employee dataEmployee = new Employee();
         Employee employeeParam = new Employee();
 
         List<Employee> data = employeeService.getAllEmployee(employeeParam);
 
-        dataEmployee.setId(7);
-        dataEmployee.setName("Nanra Sukedy");
-        dataEmployee.setEmail("nanrasukedy@outlook.com");
-        dataEmployee.setPhone("08123456789");
-        dataEmployee.setAddress("Bandung");
-
-        model.addAttribute("name", dataEmployee.getName());
-        model.addAttribute("address", dataEmployee.getAddress());
-        model.addAttribute("email", dataEmployee.getEmail());
-        model.addAttribute("phone", dataEmployee.getPhone());
-
         System.out.println(data);
 
-        return "/employee/list";
+        return ResponseEntity.ok().body(data);
     }
-
-
 }

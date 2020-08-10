@@ -41,17 +41,16 @@ public class EmployeeRepository {
         Map<String, Object> resultSp = simpleJdbcCall.execute(parameterSource);
 
         // Get Result Value to Object
-        List<Employee> userLists = (List<Employee>) resultSp.get(InformationConstant.REF_CURSOR_RECORDSET);
-
+        List<Employee> employeeList = (List<Employee>) resultSp.get("p_recordset");
         System.out.println("Isi Employee");
-        System.out.println(userLists.get(0).getName());
+        for (Employee data: employeeList) {
+            System.out.println("Name: " + data.getName());
+            System.out.println("Address: " + data.getAddress());
+//            System.out.println("Email: " + data.getEmail());
+            System.out.println();
+        }
 
-
-        return userLists;
-
-
-
-
+        return employeeList;
 
     }
 
