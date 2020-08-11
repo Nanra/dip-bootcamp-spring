@@ -19,13 +19,15 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @GetMapping(value = ("/list"))
-    public String listEmployee() {
+    public String listEmployee(Model model) {
 
         Employee employeeParam = new Employee();
 
         List<Employee> data = employeeService.getAllEmployee(employeeParam);
 
         System.out.println(data);
+
+        model.addAttribute("dataEmployee", data);
 
 //        return ResponseEntity.ok().body(data);
         return "employee/list";
