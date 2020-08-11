@@ -19,7 +19,7 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @GetMapping(value = ("/list"))
-    public ResponseEntity<?> listEmployee() {
+    public String listEmployee() {
 
         Employee employeeParam = new Employee();
 
@@ -27,6 +27,7 @@ public class EmployeeController {
 
         System.out.println(data);
 
-        return ResponseEntity.ok().body(data);
+//        return ResponseEntity.ok().body(data);
+        return "employee/list";
     }
 }
