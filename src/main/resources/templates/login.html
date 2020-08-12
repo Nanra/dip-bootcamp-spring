@@ -16,7 +16,7 @@
 
 <div class="login-form">
     <p><h2>PT Daya Indosa Pratama</h2>Java Programming Training</p>
-    <form th:action="@{/validate-login/}" th:object="${dataLogin}" method="post">
+    <form th:action="@{/validate-login/}" th:object="${dataLoginRequest}" method="post">
         <h5 class="text-center" >Please Sign in to start your session</h5>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" required="required" th:field="*{username}">

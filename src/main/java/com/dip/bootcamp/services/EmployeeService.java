@@ -3,6 +3,7 @@ package com.dip.bootcamp.services;
 import com.dip.bootcamp.models.Employee;
 import com.dip.bootcamp.repository.EmployeeRepository;
 import com.dip.bootcamp.utilities.InformationConstant;
+import com.dip.bootcamp.viewmodels.ResponseSave;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class EmployeeService {
         return repository.listEmployee(dataParam);
     }
 
-    public Integer saveEmployee(Employee dataForSave) {
+    public ResponseSave saveEmployee(Employee dataForSave) {
         return repository.insertEmployee(dataForSave);
     }
 

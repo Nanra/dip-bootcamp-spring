@@ -3,6 +3,7 @@ package com.dip.bootcamp.repository;
 import com.dip.bootcamp.models.Employee;
 import com.dip.bootcamp.utilities.InformationConstant;
 import com.dip.bootcamp.utilities.JdbcHelper;
+import com.dip.bootcamp.viewmodels.ResponseSave;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -42,22 +43,36 @@ public class EmployeeRepository {
 
         // Get Result Value to Object
         List<Employee> employeeList = (List<Employee>) resultSp.get("p_recordset");
-        System.out.println("Isi Employee");
-        for (Employee data: employeeList) {
-            System.out.println("Name: " + data.getName());
-            System.out.println("Address: " + data.getAddress());
-//            System.out.println("Email: " + data.getEmail());
-            System.out.println();
-        }
 
         return employeeList;
 
     }
 
 
-    public Integer insertEmployee(Employee dataForSave) {
-        // Block Code For Transaction with Database
-        return null;
+    public ResponseSave insertEmployee(Employee dataForSave) {
+
+        // Calling Stored Procedure To Get All User List
+        JdbcHelper helper = new JdbcHelper();
+        simpleJdbcCall = helper.useTemplate(this.jdbcTemplate)
+                .spName("SP_EMPLOYEE_INSERT")
+                .mapTo(ResponseSave.class)
+                .outParameter(InformationConstant.REF_CURSOR_RECORDSET)
+                .build();
+
+        // Set Query Param for Stored Procedure Requirement
+        SqlParameterSource parameterSource = new MapSqlParameterSource()
+                .addValue("P_NAME", dataForSave.getName())
+                .addValue("P_EMAIL", dataForSave.getEmail())
+                .addValue("P_PHONE", dataForSave.getPhone())
+                .addValue("P_ADDRESS", dataForSave.getAddress())
+                .addValue("P_CREATEBY", dataForSave.getCreateBy());
+
+        Map<String, Object> resultSp = simpleJdbcCall.execute(parameterSource);
+
+        // Get Result Value to Object
+        List<ResponseSave> responseSave = (List<ResponseSave>) resultSp.get("p_recordset");
+
+        return responseSave.get(0);
     }
 
 }

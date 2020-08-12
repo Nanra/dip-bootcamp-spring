@@ -14,6 +14,7 @@ public class Employee {
     // Declaring Field Objects
     public Integer id;
     public String name;
+    public String email;
     public String phone;
     public String address;
     public Timestamp createDate;
