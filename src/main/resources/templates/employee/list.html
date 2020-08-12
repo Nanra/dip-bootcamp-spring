@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/main-page :: main-header(Employee)">
+<head th:replace="fragments/main-page :: main-header(Employee)">
 </head>
 <body class="fix-header">
 
@@ -76,7 +76,7 @@
                                     <td th:text="${employee.getName()}"></td>
                                     <td th:text="${employee.getAddress()}"></td>
                                     <td th:text="${employee.getPhone()}"></td>
-                                    <td style="width: 15%">
+                                    <td style="width: 20%">
                                         <div class="col-sm-12">
                                             <button class="btn btn-info">Edit</button>
                                             <button class="btn btn-danger">Delete</button>
