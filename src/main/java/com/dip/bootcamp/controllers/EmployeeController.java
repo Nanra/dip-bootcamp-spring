@@ -2,6 +2,7 @@ package com.dip.bootcamp.controllers;
 
 import com.dip.bootcamp.models.Employee;
 import com.dip.bootcamp.services.EmployeeService;
+import com.dip.bootcamp.utilities.InformationConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,12 +23,15 @@ public class EmployeeController {
     public String listEmployee(Model model) {
 
         Employee employeeParam = new Employee();
+        String title = "Employee" + InformationConstant.websiteTitle;
+
 
         List<Employee> data = employeeService.getAllEmployee(employeeParam);
 
         System.out.println(data);
 
         model.addAttribute("dataEmployee", data);
+        model.addAttribute("title", title);
 
         return "employee/list";
     }
