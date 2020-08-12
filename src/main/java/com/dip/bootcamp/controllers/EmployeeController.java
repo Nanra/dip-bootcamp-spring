@@ -29,7 +29,18 @@ public class EmployeeController {
 
         model.addAttribute("dataEmployee", data);
 
-//        return ResponseEntity.ok().body(data);
         return "employee/list";
+    }
+
+    @GetMapping(value = ("/list-role"))
+    public String listRoleEmployee(Model model) {
+
+        String titlePage = "Employee Role";
+        String userName = "Admin";
+
+        model.addAttribute("title", titlePage);
+        model.addAttribute("user", userName);
+
+        return "employee/list-role";
     }
 }
