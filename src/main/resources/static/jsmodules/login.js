@@ -15,10 +15,24 @@ $(document).on("click", "#btn-login", function(e) {
     $.when(dipAjax.post('/check-login', dataBody)).done(function(result) {
         if (result.message !== "error") {
             console.log(result);
-            alert("Login Success");
+            swal({
+                title: "Login Success!",
+                text: "You have Authenticated!",
+                icon: "success",
+                timer: 3000,
+                button: false
+            }).then(() => {
+                window.location = "/dashboard";
+            });
         } else {
             console.log(result);
-            alert("Login Failed");
+            swal({
+                title: "Login Failed!",
+                text: "Invalid User Name or Password",
+                icon: "error",
+                button: "Ok",
+                timer: 5000
+            });
             return false;
         }
     });

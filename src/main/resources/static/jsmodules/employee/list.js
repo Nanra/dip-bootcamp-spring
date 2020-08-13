@@ -1,13 +1,14 @@
 
 
 $(document).ready(function() {
+
         console.log("Masuk AJAX Get");
 
         let dataParam = {
             name: "Nanra"
         };
 
-    $.when(dipAjax.getAll("/api/employee/list")).done(function (result) {
+    $.when(dipAjax.getAll("/api/employee/list", "page-wrapper")).done(function (result) {
         console.log("All Employee");
         console.log(result);
     });

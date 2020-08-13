@@ -1,15 +1,5 @@
  $(document).ready(function () {
      "use strict";
-     // toat popup js
-     $.toast({
-         heading: 'Login Success',
-         text: 'Welcome to Daya Indosa Pratama Website',
-         position: 'top-right',
-         loaderBg: '#fff',
-         icon: 'info',
-         hideAfter: 3500,
-         stack: 6
-     })
 
 
      //ct-visits
