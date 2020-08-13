@@ -2,6 +2,8 @@ package com.dip.bootcamp.controllers.employee;
 
 import com.dip.bootcamp.models.Employee;
 import com.dip.bootcamp.services.EmployeeService;
+import com.dip.bootcamp.viewmodels.AjaxResponseBody;
+import com.dip.bootcamp.viewmodels.ResponseSave;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,23 @@ public class EmployeeApi {
     @GetMapping(value = ("/list"))
     public List<Employee> listEmployeeApi() {
         return employeeService.getAllEmployee(new Employee());
+    }
+
+    @PostMapping(value = ("/save"))
+    public AjaxResponseBody saveEmployee(@RequestBody Employee dataParam) {
+
+        AjaxResponseBody responseBody = new AjaxResponseBody();
+
+        ResponseSave save = employeeService.saveEmployee(dataParam);
+
+        if (save.getErrorMsg().equalsIgnoreCase("-")) {
+            responseBody.setStatusCode("201");
+        } else {
+            responseBody.setStatusCode("500");
+        }
+        responseBody.setMessage(save.getErrorMsg());
+
+        return responseBody;
     }
 
 }

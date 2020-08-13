@@ -5,13 +5,9 @@ import com.dip.bootcamp.services.EmployeeService;
 import com.dip.bootcamp.utilities.InformationConstant;
 import com.dip.bootcamp.viewmodels.ResponseSave;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -37,21 +33,32 @@ public class EmployeeController {
         return "employee/list";
     }
 
-    @GetMapping(value = ("/list-role"))
-    public String listRoleEmployee(Model model) {
+    @GetMapping(value = ("/add-employee"))
+    public String newEmployee(Model model) {
+        String title = "Employee" + InformationConstant.websiteTitle;
+        String titleCard = "Add Employee";
 
-        String titlePage = "Employee Role";
-        String userName = "Admin";
-
-        model.addAttribute("title", titlePage);
-        model.addAttribute("user", userName);
-
-        return "employee/list-role";
+        model.addAttribute("titleCard", titleCard);
+        model.addAttribute("title", title);
+        model.addAttribute("dataEmployee", new Employee());
+        return "employee/form-employee";
     }
 
-    @GetMapping(value = ("/new-employee"))
-    public String newEmployee(@ModelAttribute("dataInput") Employee dataEmployee, Model model) {
-        return "employee/new-employee";
+    @GetMapping(value = ("/edit-employee"))
+    public String editEmployee(@RequestParam String idEmployee, Model model) {
+
+        Employee employeeParam = new Employee();
+        employeeParam.setId(Integer.parseInt(idEmployee));
+        String title = "Employee" + InformationConstant.websiteTitle;
+        String titleCard = "Edit Employee";
+
+        Employee data = employeeService.getAllEmployee(employeeParam).get(0);
+
+        model.addAttribute("dataEmployee", data);
+        model.addAttribute("titleCard", titleCard);
+        model.addAttribute("title", title);
+
+        return "employee/form-employee";
     }
 
     @PostMapping(value = ("/save-employee"))
