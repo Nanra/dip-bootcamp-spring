@@ -29,10 +29,7 @@ public class EmployeeController {
         Employee employeeParam = new Employee();
         String title = "Employee" + InformationConstant.websiteTitle;
 
-
         List<Employee> data = employeeService.getAllEmployee(employeeParam);
-
-        System.out.println(data);
 
         model.addAttribute("dataEmployee", data);
         model.addAttribute("title", title);

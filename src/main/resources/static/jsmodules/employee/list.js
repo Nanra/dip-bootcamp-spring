@@ -3,8 +3,18 @@
 $(document).ready(function() {
         console.log("Masuk AJAX Get");
 
-    $.when(dipAjax.get("/api/employee/list", "")).done(function (result) {
+        let dataParam = {
+            name: "Nanra"
+        };
+
+    $.when(dipAjax.getAll("/api/employee/list")).done(function (result) {
+        console.log("All Employee");
         console.log(result);
-    })
+    });
+
+    $.when(dipAjax.getByFilter("/api/employee/search", dataParam)).done(function (result) {
+        console.log("Search");
+        console.log(result);
+    });
 
 });

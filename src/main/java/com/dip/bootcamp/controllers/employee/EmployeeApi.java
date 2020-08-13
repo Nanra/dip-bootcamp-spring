@@ -2,12 +2,9 @@ package com.dip.bootcamp.controllers.employee;
 
 import com.dip.bootcamp.models.Employee;
 import com.dip.bootcamp.services.EmployeeService;
-import com.dip.bootcamp.utilities.InformationConstant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,12 +15,14 @@ public class EmployeeApi {
     @Autowired
     EmployeeService employeeService;
 
+    @PostMapping(value = ("/search"))
+    public List<Employee> searchEmployeeApi(@RequestBody Employee dataParam) {
+        return employeeService.getAllEmployee(dataParam);
+    }
+
     @GetMapping(value = ("/list"))
     public List<Employee> listEmployeeApi() {
-        Employee employeeParam = new Employee();
-        List<Employee> data = employeeService.getAllEmployee(employeeParam);
-        System.out.println(data);
-        return data;
+        return employeeService.getAllEmployee(new Employee());
     }
 
 }

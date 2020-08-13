@@ -1,4 +1,4 @@
-package com.dip.bootcamp.controllers;
+package com.dip.bootcamp.controllers.payment;
 
 import com.dip.bootcamp.utilities.InformationConstant;
 import org.springframework.stereotype.Controller;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = ("/payment"))
 public class PaymentController {
-
 
     @GetMapping(value = "/list")
     public String paymentList(Model model){
