@@ -26,7 +26,7 @@
                         <h4 class="box-title">Insert Data Employee</h4>
                         <br>
 
-                        <form class="form-horizontal form-material">
+                        <form id="form-employee" class="form-horizontal form-material">
 
                             <div class="form-group">
                                 <label class="col-md-12">Full Name</label>
@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <a th:href="@{'/employee/list'}" type="button" class="btn btn-warning">Back</a>
-                                    <button class="btn btn-success">Save</button>
+                                    <button id="btn-save" type="button" class="btn btn-success">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -87,5 +87,6 @@
 </div>
 
 <div th:replace="fragments/main-page :: jsmodules"></div>
+<script src="/jsmodules/employee/form-employee.js"></script>
 </body>
 </html>
