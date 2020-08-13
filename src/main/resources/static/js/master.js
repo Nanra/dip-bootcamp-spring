@@ -1,13 +1,24 @@
 
 let dipAjax = {
-    post(destination, data) {
+    post(urlEndpoint, dataParam) {
         return $.ajax({
-            url: destination,
+            url: urlEndpoint,
             type: "POST",
             dataType: "JSON",
             cache: false,
             contentType: "application/json",
-            data: JSON.stringify(data),
+            data: JSON.stringify(dataParam),
+        });
+    },
+
+    get(urlEndpoint, dataParam) {
+        return $.ajax({
+            url: urlEndpoint,
+            type: "GET",
+            dataType: "JSON",
+            cache: false,
+            contentType: "application/json",
+            data: JSON.stringify(dataParam),
         });
     },
 };

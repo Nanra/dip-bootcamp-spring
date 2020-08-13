@@ -1,4 +1,4 @@
-package com.dip.bootcamp.controllers;
+package com.dip.bootcamp.controllers.employee;
 
 import com.dip.bootcamp.models.Employee;
 import com.dip.bootcamp.services.EmployeeService;
