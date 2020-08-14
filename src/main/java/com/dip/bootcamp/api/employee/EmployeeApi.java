@@ -1,4 +1,4 @@
-package com.dip.bootcamp.controllers.employee;
+package com.dip.bootcamp.api.employee;
 
 import com.dip.bootcamp.models.Employee;
 import com.dip.bootcamp.services.EmployeeService;
@@ -43,11 +43,28 @@ public class EmployeeApi {
         return responseBody;
     }
 
+    @PostMapping(value = ("/update"))
+    public AjaxResponseBody updateEmployee(@RequestBody Employee dataParam) {
+
+        AjaxResponseBody responseBody = new AjaxResponseBody();
+
+        ResponseSave save = employeeService.updateEmployee(dataParam);
+
+        if (save.getErrorMsg().equalsIgnoreCase("-")) {
+            responseBody.setStatusCode("201");
+        } else {
+            responseBody.setStatusCode("500");
+        }
+        responseBody.setMessage(save.getErrorMsg());
+
+        return responseBody;
+    }
+
     @PostMapping(value = ("/delete"))
     public AjaxResponseBody deleteEmployee(@RequestBody Employee dataParam) {
         AjaxResponseBody responseBody = new AjaxResponseBody();
 
-        ResponseSave delete = employeeService.saveEmployee(dataParam);
+        ResponseSave delete = employeeService.deleteEmployee(dataParam);
 
         if (delete.getErrorMsg().equalsIgnoreCase("-")) {
             responseBody.setStatusCode("201");

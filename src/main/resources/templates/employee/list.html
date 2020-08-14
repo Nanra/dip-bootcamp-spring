@@ -87,7 +87,7 @@
                                     <td style="width: 20%">
                                         <div class="col-sm-12">
                                             <a th:href="@{'/employee/edit-employee?idEmployee='+${employee.getId()}}" type="button" class="btn btn-info">Edit</a>
-                                            <button type="button" id="btn-delete" class="btn btn-danger">Delete</button>
+                                            <a href="javascript:void(0)" type="button" th:attr="data-id_delete=${employee.getId()}" id="btn-delete" class="btn btn-danger">Delete</a>
                                         </div>
                                     </td>
                                 </tr>

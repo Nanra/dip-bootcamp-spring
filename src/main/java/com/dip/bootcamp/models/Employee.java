@@ -19,4 +19,6 @@ public class Employee {
     public String address;
     public Timestamp createDate;
     public String createBy;
+    public Timestamp editDate;
+    public String editBy;
 }

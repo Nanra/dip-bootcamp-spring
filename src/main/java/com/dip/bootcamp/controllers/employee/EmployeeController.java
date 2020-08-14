@@ -38,22 +38,26 @@ public class EmployeeController {
     public String newEmployee(Model model) {
         String titleCard = "Add Employee";
 
+        model.addAttribute("username", "Nanra");
         model.addAttribute("titleCard", titleCard);
         model.addAttribute("title", title);
         model.addAttribute("dataEmployee", new Employee());
-        model.addAttribute("username", "Nanra");
+
         return "employee/form-employee";
     }
 
     @GetMapping(value = ("/edit-employee"))
     public String editEmployee(@RequestParam String idEmployee, Model model) {
-
-        Employee employeeParam = new Employee();
-        employeeParam.setId(Integer.parseInt(idEmployee));
         String titleCard = "Edit Employee";
 
+        // Set Parameter for Filtering
+        Employee employeeParam = new Employee();
+        employeeParam.setId(Integer.parseInt(idEmployee));
+
+        // Get Data From Service
         Employee data = employeeService.getAllEmployee(employeeParam).get(0);
 
+        // Set Model For View Attributes
         model.addAttribute("dataEmployee", data);
         model.addAttribute("titleCard", titleCard);
         model.addAttribute("title", title);

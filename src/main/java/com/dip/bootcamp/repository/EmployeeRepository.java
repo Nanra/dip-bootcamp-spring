@@ -73,6 +73,33 @@ public class EmployeeRepository {
         return responseSave.get(0);
     }
 
+    public ResponseSave updateEmployee(Employee dataForUpdate) {
+
+        // Calling Stored Procedure To Get All User List
+        JdbcHelper helper = new JdbcHelper();
+        simpleJdbcCall = helper.useTemplate(this.jdbcTemplate)
+                .spName("SP_EMPLOYEE_UPDATE")
+                .mapTo(ResponseSave.class)
+                .outParameter(InformationConstant.REF_CURSOR_RECORDSET)
+                .build();
+
+        // Set Query Param for Stored Procedure Requirement
+        SqlParameterSource parameterSource = new MapSqlParameterSource()
+                .addValue("P_ID", dataForUpdate.getId())
+                .addValue("P_NAME", dataForUpdate.getName())
+                .addValue("P_EMAIL", dataForUpdate.getEmail())
+                .addValue("P_PHONE", dataForUpdate.getPhone())
+                .addValue("P_ADDRESS", dataForUpdate.getAddress())
+                .addValue("P_EDITBY", dataForUpdate.getEditBy());
+
+        Map<String, Object> resultSp = simpleJdbcCall.execute(parameterSource);
+
+        // Get Result Value to Object
+        List<ResponseSave> responseSave = (List<ResponseSave>) resultSp.get("p_recordset");
+
+        return responseSave.get(0);
+    }
+
     public ResponseSave deleteEmployee(Employee dataForDelete) {
         // Calling Stored Procedure To Get All User List
         JdbcHelper helper = new JdbcHelper();

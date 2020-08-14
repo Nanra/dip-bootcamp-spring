@@ -23,6 +23,10 @@ public class EmployeeService {
         return repository.insertEmployee(dataForSave);
     }
 
+    public  ResponseSave updateEmployee(Employee dataForUpdate) {
+        return repository.updateEmployee(dataForUpdate);
+    }
+
     public ResponseSave deleteEmployee(Employee dataForDelete) {
         return repository.deleteEmployee(dataForDelete);
     }
