@@ -22,7 +22,6 @@ public class EmployeeRepository {
 
     SimpleJdbcCall simpleJdbcCall;
 
-
     public List<Employee> listEmployee(Employee dataParam) {
 
         // Calling Stored Procedure To Get All User List
@@ -48,7 +47,6 @@ public class EmployeeRepository {
 
     }
 
-
     public ResponseSave insertEmployee(Employee dataForSave) {
 
         // Calling Stored Procedure To Get All User List
@@ -73,6 +71,27 @@ public class EmployeeRepository {
         List<ResponseSave> responseSave = (List<ResponseSave>) resultSp.get("p_recordset");
 
         return responseSave.get(0);
+    }
+
+    public ResponseSave deleteEmployee(Employee dataForDelete) {
+        // Calling Stored Procedure To Get All User List
+        JdbcHelper helper = new JdbcHelper();
+        simpleJdbcCall = helper.useTemplate(this.jdbcTemplate)
+                .spName("SP_EMPLOYEE_DELETE")
+                .mapTo(ResponseSave.class)
+                .outParameter(InformationConstant.REF_CURSOR_RECORDSET)
+                .build();
+
+        // Set Query Param for Stored Procedure Requirement
+        SqlParameterSource parameterSource = new MapSqlParameterSource()
+                .addValue("P_ID", dataForDelete.getId());
+
+        Map<String, Object> resultSp = simpleJdbcCall.execute(parameterSource);
+
+        // Get Result Value to Object
+        List<ResponseSave> responseDelete = (List<ResponseSave>) resultSp.get("p_recordset");
+
+        return responseDelete.get(0);
     }
 
 }

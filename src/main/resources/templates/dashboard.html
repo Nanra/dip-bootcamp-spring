@@ -6,7 +6,7 @@
 
 <div id="wrapper">
 
-    <div th:replace="fragments/main-page :: main-navbar"></div>
+    <div th:replace="fragments/main-page :: main-navbar(username=${username})"></div>
     <div th:replace="fragments/main-page :: main-sidebar"></div>
 
     <!-- Page Content -->
@@ -17,11 +17,7 @@
                     <h4 class="page-title">Dashboard</h4> </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            <!-- ============================================================== -->
-            <!-- Different data widgets -->
-            <!-- ============================================================== -->
-            <!-- .row -->
+            <!-- Card Analytics -->
             <div class="row">
                 <div class="col-lg-4 col-sm-6 col-xs-12">
                     <a href="/dashboard/detail-visitor">
@@ -59,12 +55,7 @@
                     </div>
                 </div>
             </div>
-            <!--/.row -->
-            <!--row -->
-            <!-- /.row -->
-            <!-- ============================================================== -->
             <!-- table -->
-            <!-- ============================================================== -->
             <div class="row">
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="white-box">

@@ -43,4 +43,19 @@ public class EmployeeApi {
         return responseBody;
     }
 
+    @PostMapping(value = ("/delete"))
+    public AjaxResponseBody deleteEmployee(@RequestBody Employee dataParam) {
+        AjaxResponseBody responseBody = new AjaxResponseBody();
+
+        ResponseSave delete = employeeService.saveEmployee(dataParam);
+
+        if (delete.getErrorMsg().equalsIgnoreCase("-")) {
+            responseBody.setStatusCode("201");
+        } else {
+            responseBody.setStatusCode("500");
+        }
+        responseBody.setMessage(delete.getErrorMsg());
+        return responseBody;
+    }
+
 }

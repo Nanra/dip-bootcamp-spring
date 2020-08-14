@@ -23,4 +23,8 @@ public class EmployeeService {
         return repository.insertEmployee(dataForSave);
     }
 
+    public ResponseSave deleteEmployee(Employee dataForDelete) {
+        return repository.deleteEmployee(dataForDelete);
+    }
+
 }

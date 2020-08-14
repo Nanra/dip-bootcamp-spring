@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/main-page :: main-header(Employee)">
+<head th:replace="fragments/main-page :: main-header(titlePage=${title})">
 </head>
 <body class="fix-header">
 
 <div id="wrapper">
-    <div th:replace="fragments/main-page :: main-navbar"></div>
+    <div th:replace="fragments/main-page :: main-navbar(username=${username})"></div>
     <div th:replace="fragments/main-page :: main-sidebar"></div>
 
     <!-- Page Content -->
@@ -69,7 +69,10 @@
                                     <button id="btn-save" type="button" class="btn btn-success">Save</button>
                                 </div>
                             </div>
+
+
                         </form>
+
                     </div>
 
                     </div>

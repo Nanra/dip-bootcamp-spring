@@ -1,6 +1,4 @@
 
-
-
 $(document).off("click", "#btn-save");
 $(document).on("click", "#btn-save", function(e) {
 
@@ -20,7 +18,7 @@ $(document).on("click", "#btn-save", function(e) {
             console.log(result);
             swal({
                 title: "Save Success!",
-                text: "Your data has been saved!",
+                text: "Your data has been saved",
                 icon: "success",
                 timer: 3000,
                 button: false
@@ -42,5 +40,3 @@ $(document).on("click", "#btn-save", function(e) {
 
 
 });
-
-

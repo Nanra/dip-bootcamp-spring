@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/main-page :: main-header(titlePage)">
+<head th:replace="fragments/main-page :: main-header(titlePage=${title})">
 
 </head>
 <body class="fix-header">
 <div id="wrapper">
-    <nav th:replace="fragments/main-page :: main-navbar(username)"></nav>
+    <nav th:replace="fragments/main-page :: main-navbar(username=${username})"></nav>
     <div th:replace="fragments/main-page :: main-sidebar"></div>
 
     <div id="page-wrapper">

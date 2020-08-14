@@ -15,6 +15,7 @@ public class PaymentController {
         String title = "Payment" + InformationConstant.websiteTitle;
 
         model.addAttribute("title", title);
+        model.addAttribute("username", "Nanra");
         return "payment/list";
     }
 

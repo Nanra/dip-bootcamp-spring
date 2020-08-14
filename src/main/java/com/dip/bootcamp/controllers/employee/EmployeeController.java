@@ -15,6 +15,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = ("/employee"))
 public class EmployeeController {
+    String title = "Employee" + InformationConstant.websiteTitle;
 
     @Autowired
     EmployeeService employeeService;
@@ -23,11 +24,11 @@ public class EmployeeController {
     public String listEmployee(Model model) {
 
         Employee employeeParam = new Employee();
-        String title = "Employee" + InformationConstant.websiteTitle;
 
         List<Employee> data = employeeService.getAllEmployee(employeeParam);
 
         model.addAttribute("dataEmployee", data);
+        model.addAttribute("username", "Nanra");
         model.addAttribute("title", title);
 
         return "employee/list";
@@ -35,12 +36,12 @@ public class EmployeeController {
 
     @GetMapping(value = ("/add-employee"))
     public String newEmployee(Model model) {
-        String title = "Employee" + InformationConstant.websiteTitle;
         String titleCard = "Add Employee";
 
         model.addAttribute("titleCard", titleCard);
         model.addAttribute("title", title);
         model.addAttribute("dataEmployee", new Employee());
+        model.addAttribute("username", "Nanra");
         return "employee/form-employee";
     }
 
@@ -49,7 +50,6 @@ public class EmployeeController {
 
         Employee employeeParam = new Employee();
         employeeParam.setId(Integer.parseInt(idEmployee));
-        String title = "Employee" + InformationConstant.websiteTitle;
         String titleCard = "Edit Employee";
 
         Employee data = employeeService.getAllEmployee(employeeParam).get(0);
@@ -57,6 +57,7 @@ public class EmployeeController {
         model.addAttribute("dataEmployee", data);
         model.addAttribute("titleCard", titleCard);
         model.addAttribute("title", title);
+        model.addAttribute("username", "Nanra");
 
         return "employee/form-employee";
     }
