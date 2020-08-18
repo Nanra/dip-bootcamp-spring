@@ -3,8 +3,10 @@ package com.dip.bootcamp.controllers.employee;
 import com.dip.bootcamp.models.Employee;
 import com.dip.bootcamp.services.EmployeeService;
 import com.dip.bootcamp.utilities.InformationConstant;
+import com.dip.bootcamp.utilities.JsonHelper;
 import com.dip.bootcamp.viewmodels.ResponseSave;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +34,21 @@ public class EmployeeController {
         model.addAttribute("title", title);
 
         return "employee/list";
+    }
+
+    @GetMapping(value = ("/list-datatables"))
+    public String listEmployeeDt(Model model) {
+
+        Employee employeeParam = new Employee();
+
+        List<Employee> data = employeeService.getAllEmployee(employeeParam);
+
+
+        model.addAttribute("dataEmployee", JsonHelper.toJsonString(data));
+        model.addAttribute("username", "Nanra");
+        model.addAttribute("title", title);
+
+        return "employee/list2";
     }
 
     @GetMapping(value = ("/add-employee"))
