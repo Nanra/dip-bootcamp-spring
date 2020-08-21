@@ -19,7 +19,7 @@ public class ProductApi {
     ProductService productService;
 
     @GetMapping(value = ("/list"))
-    public List<Product> listProduct(Model model){
+    public List<Product> listProduct(){
         return productService.getAllProduct(new Product());
     }
 

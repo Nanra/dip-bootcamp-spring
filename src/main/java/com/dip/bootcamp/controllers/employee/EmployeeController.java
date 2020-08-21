@@ -48,7 +48,7 @@ public class EmployeeController {
         model.addAttribute("username", "Nanra");
         model.addAttribute("title", title);
 
-        return "employee/list-datatable";
+        return "employee/list2";
     }
 
     @GetMapping(value = ("/add-employee"))

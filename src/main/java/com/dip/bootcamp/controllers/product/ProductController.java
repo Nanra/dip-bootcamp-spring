@@ -23,10 +23,10 @@ public class ProductController {
 
         String titlePage = "Product" + InformationConstant.websiteTitle;
 
-        List<Product> data = productService.getAllProduct(new Product());
+//        List<Product> data = productService.getAllProduct(new Product());
 
         model.addAttribute("title", titlePage);
-        model.addAttribute("dataProduct", titlePage);
+//        model.addAttribute("dataProduct", titlePage);
         model.addAttribute("username", "Nanra");
 
         return "product/list";

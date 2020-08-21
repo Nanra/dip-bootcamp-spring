@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Data
@@ -15,6 +16,7 @@ public class Product {
     public String name;
     public String quantity;
     public String sku;
+    public BigDecimal price;
     public String createBy;
     public Timestamp createDate;
     public String editBy;

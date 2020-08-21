@@ -28,7 +28,7 @@ public class ProductRepository {
         JdbcHelper helper = new JdbcHelper();
         simpleJdbcCall = helper.useTemplate(this.jdbcTemplate)
                 .spName("SP_PRODUCT_LIST")
-                .mapTo(ProductController.class)
+                .mapTo(Product.class)
                 .outParameter(InformationConstant.REF_CURSOR_RECORDSET)
                 .build();
 
@@ -41,8 +41,12 @@ public class ProductRepository {
         // Stored Procedure Execution
         Map<String, Object> resultSp = simpleJdbcCall.execute(parameterSource);
 
+        System.out.println(resultSp);
+
         // Get Result Value to Object
         List<Product> productList = (List<Product>) resultSp.get("p_recordset");
+
+        System.out.println(productList.get(0).getId());
 
         return productList;
 
