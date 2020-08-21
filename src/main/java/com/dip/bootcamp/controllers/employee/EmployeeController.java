@@ -33,7 +33,7 @@ public class EmployeeController {
         model.addAttribute("username", "Nanra");
         model.addAttribute("title", title);
 
-        return "employee/list";
+        return "employee/list2";
     }
 
     @GetMapping(value = ("/list-datatables"))
@@ -48,7 +48,7 @@ public class EmployeeController {
         model.addAttribute("username", "Nanra");
         model.addAttribute("title", title);
 
-        return "employee/list2";
+        return "employee/list-datatable";
     }
 
     @GetMapping(value = ("/add-employee"))
