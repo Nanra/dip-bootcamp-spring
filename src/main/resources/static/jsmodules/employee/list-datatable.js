@@ -1,24 +1,21 @@
+console.log("list-datatables.js");
+
 let tblName = $("#tableEmployee");
 
 
 $(document).ready(function() {
-    var nButtons = [];
-    dtTableExportButtons.splice(0, 0, nButtons);
-    tbl = initDatatable();
-    // generateButtonExport();
-    // generateButtonExportOnLeft();
+    initDatatable(dataEmployeeParse);
 });
 
 // Datatable Init
-function initDatatable() {
+function initDatatable(dataParam) {
     return tblName.DataTable({
 
-        "sAjaxSource": "/api/employee/list",
-        "sAjaxDataProp": "",
         "order": [],
         "ordering": true,
         "searching": true,
         "pageLength": 10,
+        "data": dataParam,
         "lengthChange": false,
         "paging": true,
         "destroy": true,
@@ -26,28 +23,46 @@ function initDatatable() {
         "responsive": true,
         'autoWidth': false,
         "dom": 'Bfrtip',
-        "buttons": dtTableExportButtons,
+        "buttons": [],
         "processing": true,
-        "aoColumns": [
+        "columns":[
             {
-                "width": "2%",
-                "mData": "id"
+                "data":"id",
+                "width":"3%",
             },
             {
-                "width": "6%",
-                "mData": "name"
+                "data":"name",
+                "width":"7%",
+                "render": data => {
+                    if (data === null) {
+                        return "-"
+                    } else {
+                        return data
+                    }
+                }
             },
             {
-                "width": "6%",
-                "mData": "address"
+                "data":"address",
+                "width":"5%"
             },
             {
-                "width": "6%",
-                "mData": "phone"
+                "data":"phone",
+                "width":"5%"
             },
             {
-                "width": "6%",
-                "mData": "email"
+                "data":"email",
+                "width":"7%"
+            },
+            {
+                "data":"createBy",
+                "width":"7%",
+                "render": data => {
+                    if (data === null) {
+                        return "-"
+                    } else {
+                        return data
+                    }
+                }
             },
             {
                 "searchable": false,
@@ -62,7 +77,43 @@ function initDatatable() {
                     return btnLink;
                 }
             },
+
         ],
+        // "aoColumns": [
+        //     {
+        //         "width": "2%",
+        //         "mData": "id"
+        //     },
+        //     {
+        //         "width": "6%",
+        //         "mData": "name"
+        //     },
+        //     {
+        //         "width": "6%",
+        //         "mData": "address"
+        //     },
+        //     {
+        //         "width": "6%",
+        //         "mData": "phone"
+        //     },
+        //     {
+        //         "width": "6%",
+        //         "mData": "email"
+        //     },
+        //     {
+        //         "searchable": false,
+        //         "orderable": false,
+        //         "width": "4%",
+        //         "data": null,
+        //         render: function (data, type, row) {
+        //             console.log(data.id);
+        //             let btnLink = "";
+        //             btnLink = btnLink + '<a class="btn btn-info" type="button"  href="/employee/edit-employee?idEmployee=' + data.id + '">Edit</a>  ';
+        //             btnLink = btnLink + ' <a href="javascript:void(0)" type="button" data-id_delete="' + data.id + '" id="btn-delete" class="btn btn-danger">Delete</a>';
+        //             return btnLink;
+        //         }
+        //     },
+        // ],
     });
 }
 

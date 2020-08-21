@@ -25,7 +25,7 @@ function generateButtonExportOnLeft() {
     $(".dataTables_wrapper div.dt-buttons").css({"position": "initial"});
 }
 
-
+// AJAX CONFIGURATION
 let dipAjax = {
     post(urlEndpoint, dataParam) {
         return $.ajax({
@@ -79,4 +79,57 @@ let dipAjax = {
     },
 
 };
+
+
+// MODALS CONFIGURATION
+function showModal(url, title, postdata) {
+    if (postdata) {
+        $.ajax({
+            url: url,
+            type: "POST",
+            dataType: "html",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(postdata),
+            success: function (html) {
+                $('#dynamicModal .modal-title').text(title);
+                $('#dynamicModal .modal-body').html(html);
+                $('#dynamicModal').modal('show', {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }
+        });
+    } else {
+        $.ajax({
+            url: url,
+            success: function (html) {
+                $('#dynamicModal .modal-title').text(title);
+                $('#dynamicModal .modal-body').html(html);
+                $('#dynamicModal').modal('show', {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }
+        });
+    }
+}
+
+function setModalWidth(w) {
+    $('#dynamicModal').on('shown.bs.modal', function () {
+        if (w == -1) {
+            $(this).find('.modal-dialog').css({
+                width: '100%', //probably not needed
+                height: 'auto', //probably not needed
+                'max-height': '100%'
+            });
+        } else {
+
+            $(this).find('.modal-dialog').css({
+                width: w + 'px', //probably not needed
+                height: 'auto', //probably not needed
+                'max-height': '100%'
+            });
+        }
+    });
+}
 

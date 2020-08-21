@@ -39,6 +39,7 @@
 
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -146,8 +147,30 @@
 </div>
 <!-- End Wrapper -->
 
-<div th:fragment="jsmodules">
-    <!-- ============================================================== -->
+
+<div class="modal fade" id="dynamicModal" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h4 class="modal-title" id="exampleModalLabel"></h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                Content is loading...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="jsmodules"><!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
@@ -170,8 +193,6 @@
     <!-- Sparkline chart JavaScript -->
     <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
 
-
-
     <!--DATA TABLE :: BASE-->
     <script th:src="@{../plugins/bower_components/datatables/datatables.min.js}"></script>
     <script th:src="@{../plugins/bower_components/datatables/RowGroup-1.1.2/js/dataTables.rowGroup.min.js}"></script>
@@ -191,13 +212,10 @@
     <script th:src="@{../plugins/bower_components/datatables/Buttons-1.6.3/js/buttons.print.min.js}"></script>
     <script th:src="@{../plugins/bower_components/datatables/Buttons-1.6.3/js/buttons.colVis.min.js}"></script>
 
-
-
-
     <!-- Custom Theme JavaScript -->
     <script src="/js/custom.min.js"></script>
     <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-<!--    <script src="../plugins/bower_components/pace/loadingoverlay.min.js"></script>-->
+    <!--    <script src="../plugins/bower_components/pace/loadingoverlay.min.js"></script>-->
     <script src="/js/master.js"></script>
 </div>
 

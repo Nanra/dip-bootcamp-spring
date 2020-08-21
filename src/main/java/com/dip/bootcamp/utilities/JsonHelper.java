@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 
 public class JsonHelper {
 
-
     public static String toJsonString(Object o) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.serializeNulls();
@@ -14,7 +13,5 @@ public class JsonHelper {
 
         return gson.toJson(o);
     }
-
-
 
 }
