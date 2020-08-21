@@ -21,19 +21,34 @@
             <!-- Page Content Body -->
             <div class="row">
                 <div class="col-md-12 col-lg-12 col-sm-12">
-                    <!-- Card Table Payment -->
+
+                    <!-- Card Table Employee -->
                     <div class="white-box">
 
-                        <!-- Button Add New Payment -->
+                        <!-- Button Add New Employee -->
                         <div class="col-md-1 col-sm-4 col-xs-6 pull-right">
-                            <button class="btn btn-primary">Add New</button>
+                            <a th:href="@{'/employee/add-employee'}" type="button" class="btn btn-primary">Add New</a>
                         </div>
                         <!-- Card title -->
                         <h3 class="box-title">List Payment</h3>
 
                         <!-- Card Content -->
+                        <div class="table-responsive">
 
-
+                            <table class="table" id="tablePayment">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Invoice Number</th>
+                                    <th>Payer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Create By</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,6 +62,7 @@
 </div>
 
 <div th:replace="fragments/main-page :: jsmodules"></div>
+<script src="/jsmodules/payment/list.js"></script>
 
 </body>
 </html>
