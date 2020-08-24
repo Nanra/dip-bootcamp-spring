@@ -69,7 +69,7 @@ public class ResourceHelper {
     public static String getFilePathFromResource(String fileName, String fileExtension) throws IOException {
 
         System.out.println("File Name" + fileName);
-        System.out.println("File Extension" + fileExtension);
+        System.out.println("File Extension " + fileExtension);
 
         InputStream in = null;
         Path out = null;
@@ -109,4 +109,37 @@ public class ResourceHelper {
         return String.valueOf(out);
 
     }
+
+
+    public static byte[] readBytesFromFile(String filePath) {
+
+        FileInputStream fileInputStream = null;
+        byte[] bytesArray = null;
+
+        try {
+
+            File file = new File(filePath);
+            bytesArray = new byte[(int) file.length()];
+
+            //read file into bytes[]
+            fileInputStream = new FileInputStream(file);
+            fileInputStream.read(bytesArray);
+
+        } catch (IOException e) {
+            // e.printStackTrace();
+        } finally {
+            if (fileInputStream != null) {
+                try {
+                    fileInputStream.close();
+                } catch (IOException e) {
+                    // e.printStackTrace();
+                }
+            }
+
+        }
+
+        return bytesArray;
+
+    }
+
 }
