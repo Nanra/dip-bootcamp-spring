@@ -57,7 +57,7 @@ function initDatatable() {
                 render: function (data) {
                     console.log(data.id);
                     let btnLink = "";
-                    btnLink = btnLink + '<a title="Print Report" class="btn btn-primary" type="button"  href="/employee/edit-employee?idEmployee=' + data.id + '"><i class="fa fa-print"></i></a>  ';
+                    btnLink = btnLink + '<a title="Print Report" class="btn btn-primary" type="button"  href="/payment/print-invoice/'+ data.id +'"><i class="fa fa-print"></i></a>  ';
                     btnLink = btnLink + '<a title="Edit" class="btn btn-info" type="button"  href="/employee/edit-employee?idEmployee=' + data.id + '"><i class="fa fa-pencil"></i></a>  ';
                     btnLink = btnLink + ' <a title="Delete" href="javascript:void(0)" type="button" data-id_delete="' + data.id + '" id="btn-delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>';
                     return btnLink;

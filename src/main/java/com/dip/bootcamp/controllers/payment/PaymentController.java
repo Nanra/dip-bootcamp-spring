@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.ByteArrayInputStream;
@@ -25,25 +26,17 @@ public class PaymentController {
     @GetMapping(value = "/list")
     public String paymentList(Model model) throws Exception {
         String title = "Payment" + InformationConstant.websiteTitle;
-
-        // Set Parameter for Sample
-        Payment paymentParam = new Payment();
-        paymentParam.setId("1");
-
-        // Call Method Document Payment Stream
-        paymentService.documentPaymentStream(paymentParam);
-
         model.addAttribute("title", title);
         model.addAttribute("username", "Nanra");
         return "payment/list";
     }
 
-@GetMapping(value = "/print-invoice")
-    public ResponseEntity<?> printInvoice() throws Exception {
+@GetMapping(value = "/print-invoice/{idInvoice}")
+    public ResponseEntity<?> printInvoice(@PathVariable String idInvoice) throws Exception {
     ByteArrayInputStream in = null;
 
     Payment payment = new Payment();
-    payment.setId("1");
+    payment.setId(idInvoice);
     in = paymentService.documentPaymentStream(payment);
 
     HttpHeaders headers = new HttpHeaders();
