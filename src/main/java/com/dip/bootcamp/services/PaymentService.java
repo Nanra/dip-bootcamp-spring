@@ -18,19 +18,24 @@ public class PaymentService {
     @Autowired
     PaymentRepository repository;
 
+    // Get All Data Payment
     public List<Payment> getAllPayment(Payment dataParam) {
         return repository.listPayment(dataParam);
     }
 
+    // Generate Document Report Payment Invoice
     public ByteArrayInputStream documentPaymentStream(Payment dataParam) throws Exception {
 
+        // Get Data Row / ById From Database
         Payment paymentObject = repository.listPayment(dataParam).get(0);
 
+        // Setup Path Folder for Reading Resource
         String parentPath = ResourceHelper.getResourcePath();
         String pathFile = ResourceHelper.getFilePathFromResource("template-surat-tagihan", ".docx");
 
+        // Config/Init Document Aspose Library
         Document doc = new Document(pathFile);
-        System.out.print(doc);
+        System.out.println("IO Address : " + doc);
 
         doc.getMailMerge().setTrimWhitespaces(true);
         doc.getMailMerge().setCleanupOptions(MailMergeCleanupOptions.REMOVE_UNUSED_FIELDS | MailMergeCleanupOptions.REMOVE_CONTAINING_FIELDS
@@ -41,12 +46,12 @@ public class PaymentService {
         };
 
         doc.getMailMerge().execute(toMerge, new Object[]{
-                paymentObject.getPayer(),
-                paymentObject.getInvoiceNumber(),
-                paymentObject.getAmount(),
-                paymentObject.getStatus(),
-                paymentObject.getCreateDate(),
-                paymentObject.getCreateBy(),
+                paymentObject.getPayer() == null ? "-" : paymentObject.getPayer(),
+                paymentObject.getInvoiceNumber() == null ? "-" : paymentObject.getInvoiceNumber(),
+                paymentObject.getAmount() == null ? "-" : paymentObject.getAmount(),
+                paymentObject.getStatus() == null ? "-" : paymentObject.getStatus(),
+                paymentObject.getCreateDate() == null ? "-" : paymentObject.getCreateDate(),
+                paymentObject.getCreateBy() == null ? "-" : paymentObject.getCreateBy(),
                 "PT. Daya Indosa Pratama"
         });
 

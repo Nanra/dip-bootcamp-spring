@@ -26,18 +26,20 @@ public class PaymentController {
     public String paymentList(Model model) throws Exception {
         String title = "Payment" + InformationConstant.websiteTitle;
 
+        // Set Parameter for Sample
+        Payment paymentParam = new Payment();
+        paymentParam.setId("1");
 
-        Payment payment = new Payment();
-        payment.setId("1");
-        paymentService.documentPaymentStream(payment);
+        // Call Method Document Payment Stream
+        paymentService.documentPaymentStream(paymentParam);
 
         model.addAttribute("title", title);
         model.addAttribute("username", "Nanra");
         return "payment/list";
     }
 
-@GetMapping(value = "/download")
-    public ResponseEntity downloadInvoice() throws Exception {
+@GetMapping(value = "/print-invoice")
+    public ResponseEntity<?> printInvoice() throws Exception {
     ByteArrayInputStream in = null;
 
     Payment payment = new Payment();
